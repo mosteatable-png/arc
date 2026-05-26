@@ -1,163 +1,174 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>arc</title>
+
 <style>
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Arial,sans-serif;
+font-family:Inter,Arial,sans-serif;
 }
 
 body{
-height:100vh;
+min-height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:
-radial-gradient(circle at top,#00d9ff22,#000814),
-#020617;
+background:#061120;
 overflow:hidden;
+color:white;
+padding:20px;
 }
 
-/* stars */
+/* softer stars */
 body::before{
 content:"";
 position:absolute;
-width:100%;
-height:100%;
-background-image:
-radial-gradient(white 1px,transparent 1px);
-background-size:50px 50px;
-opacity:.6;
-animation:stars 20s linear infinite;
+inset:0;
+background:
+radial-gradient(circle at 15% 30%,white 1px,transparent 2px),
+radial-gradient(circle at 70% 20%,white 1px,transparent 2px),
+radial-gradient(circle at 40% 80%,white 1px,transparent 2px),
+radial-gradient(circle at 90% 70%,white 1px,transparent 2px),
+radial-gradient(circle at 30% 60%,white 2px,transparent 3px);
+opacity:.45;
+pointer-events:none;
 }
 
-@keyframes stars{
-from{transform:translateY(0);}
-to{transform:translateY(100px);}
+/* slight blue glow behind card */
+.glow{
+position:absolute;
+width:500px;
+height:500px;
+background:#00b7ff22;
+filter:blur(120px);
+border-radius:50%;
 }
 
 .card{
 width:420px;
+background:rgba(17,25,40,.75);
+backdrop-filter:blur(14px);
+
+border:1px solid rgba(255,255,255,.08);
+
 padding:35px;
-border-radius:35px;
+border-radius:28px;
 
-background:rgba(255,255,255,.05);
-
-backdrop-filter:blur(20px);
-border:1px solid rgba(255,255,255,.1);
+transform:rotate(-0.8deg);
 
 box-shadow:
-0 0 50px #00eaff30,
-inset 0 0 20px #ffffff10;
+0 10px 40px rgba(0,0,0,.45);
 
-text-align:center;
 position:relative;
 z-index:2;
 }
 
-.profile{
-width:140px;
-height:140px;
+.top{
+display:flex;
+align-items:center;
+gap:18px;
+margin-bottom:25px;
+}
+
+.pfp{
+width:90px;
+height:90px;
 border-radius:50%;
-margin:auto;
-padding:4px;
+overflow:hidden;
+border:3px solid rgba(255,255,255,.15);
 
-background:linear-gradient(
-45deg,
-#00eaff,
-#009dff,
-#00ffcc
-);
-
-animation:spin 5s linear infinite;
+flex-shrink:0;
 }
 
-@keyframes spin{
-100%{
-transform:rotate(360deg);
-}
-}
-
-.profile img{
+.pfp img{
 width:100%;
 height:100%;
 object-fit:cover;
-border-radius:50%;
-border:4px solid #09111f;
 }
 
-h1{
-color:white;
-font-size:50px;
-margin-top:18px;
-text-shadow:0 0 25px cyan;
+.name{
+font-size:42px;
+font-weight:800;
 }
 
 .user{
-color:#9ca3af;
-font-size:18px;
-margin-top:6px;
+color:#8c95a7;
+margin-top:3px;
 }
 
 .bio{
 margin:25px 0;
-color:#00eaff;
-font-weight:bold;
+color:#cbd5e1;
+line-height:1.5;
+font-size:15px;
 }
 
-.skills{
-display:grid;
-grid-template-columns:
-repeat(2,1fr);
-gap:12px;
+.badges{
+display:flex;
+flex-wrap:wrap;
+gap:10px;
 }
 
-.skill{
-padding:14px;
-border-radius:15px;
-
-background:rgba(255,255,255,.06);
-
-color:white;
-transition:.3s;
-border:1px solid #ffffff12;
+.badge{
+padding:10px 14px;
+background:#101827;
+border-radius:999px;
+border:1px solid rgba(255,255,255,.06);
+font-size:14px;
+transition:.25s;
 }
 
-.skill:hover{
-transform:scale(1.05);
-background:#00eaff25;
-box-shadow:0 0 20px cyan;
+.badge:hover{
+transform:translateY(-3px);
+}
+
+.footer{
+margin-top:25px;
+font-size:13px;
+color:#6b7280;
 }
 </style>
 </head>
 
 <body>
 
+<div class="glow"></div>
+
 <div class="card">
 
-<div class="profile">
-<img src="https://imgur.com/19959561-c518-4a41-9d25-4c0040728596">
+<div class="top">
+
+<div class="pfp">
+<img src="./pfp.jpeg">
 </div>
 
-<h1>arc</h1>
+<div>
+<div class="name">arc</div>
+<div class="user">@xxyvzxxx • he/him</div>
+</div>
 
-<div class="user">
-@xxyvzxxx • he/him
 </div>
 
 <div class="bio">
-AMH website coming soon 🚀
+Building websites, VR projects, and random ideas. Still adding more stuff.
 </div>
 
-<div class="skills">
-<div class="skill">💻 Developer</div>
-<div class="skill">🛠 Modder</div>
-<div class="skill">🌐 HTML</div>
-<div class="skill">🐍 Python</div>
-<div class="skill">⚡ C++</div>
-<div class="skill">🎮 VR Creator</div>
+<div class="badges">
+<div class="badge">Developer</div>
+<div class="badge">VR Modding</div>
+<div class="badge">HTML</div>
+<div class="badge">Python</div>
+<div class="badge">Learning C++</div>
+<div class="badge">Projects</div>
+</div>
+
+<div class="footer">
+arcmodding © 2026
 </div>
 
 </div>
