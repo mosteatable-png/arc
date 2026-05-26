@@ -1,8 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>arc</title>
 
 <style>
@@ -10,161 +9,159 @@
 margin:0;
 padding:0;
 box-sizing:border-box;
-font-family:Inter,Arial,sans-serif;
+font-family:Inter,sans-serif;
 }
 
 body{
-min-height:100vh;
+height:100vh;
 display:flex;
 justify-content:center;
 align-items:center;
-background:#061120;
+background:
+radial-gradient(circle at center,#002446 0%,#020817 70%);
 overflow:hidden;
 color:white;
-padding:20px;
 }
 
-/* softer stars */
-body::before{
+/* random stars */
+body:before{
 content:"";
 position:absolute;
 inset:0;
-background:
-radial-gradient(circle at 15% 30%,white 1px,transparent 2px),
-radial-gradient(circle at 70% 20%,white 1px,transparent 2px),
-radial-gradient(circle at 40% 80%,white 1px,transparent 2px),
-radial-gradient(circle at 90% 70%,white 1px,transparent 2px),
-radial-gradient(circle at 30% 60%,white 2px,transparent 3px);
-opacity:.45;
-pointer-events:none;
-}
-
-/* slight blue glow behind card */
-.glow{
-position:absolute;
-width:500px;
-height:500px;
-background:#00b7ff22;
-filter:blur(120px);
-border-radius:50%;
+background-image:
+radial-gradient(circle at 10% 20%,white 2px,transparent 0),
+radial-gradient(circle at 70% 60%,white 2px,transparent 0),
+radial-gradient(circle at 80% 15%,white 1px,transparent 0),
+radial-gradient(circle at 20% 80%,white 2px,transparent 0),
+radial-gradient(circle at 50% 90%,white 1px,transparent 0);
+opacity:.6;
 }
 
 .card{
-width:420px;
-background:rgba(17,25,40,.75);
-backdrop-filter:blur(14px);
+width:520px;
+padding:45px;
+
+background:rgba(6,15,30,.85);
+
+border-radius:35px;
 
 border:1px solid rgba(255,255,255,.08);
 
-padding:35px;
-border-radius:28px;
-
-transform:rotate(-0.8deg);
-
 box-shadow:
-0 10px 40px rgba(0,0,0,.45);
+0 0 100px rgba(0,160,255,.15);
+
+backdrop-filter:blur(10px);
+
+text-align:center;
 
 position:relative;
-z-index:2;
-}
-
-.top{
-display:flex;
-align-items:center;
-gap:18px;
-margin-bottom:25px;
+z-index:5;
 }
 
 .pfp{
-width:90px;
-height:90px;
+width:130px;
+height:130px;
+margin:auto;
 border-radius:50%;
 overflow:hidden;
-border:3px solid rgba(255,255,255,.15);
 
-flex-shrink:0;
+padding:4px;
+
+background:
+linear-gradient(
+135deg,
+#00d5ff,
+#004cff
+);
+
+box-shadow:
+0 0 30px rgba(0,220,255,.4);
 }
 
 .pfp img{
 width:100%;
 height:100%;
+border-radius:50%;
 object-fit:cover;
+display:block;
 }
 
-.name{
-font-size:42px;
-font-weight:800;
+h1{
+margin-top:20px;
+font-size:70px;
+font-weight:900;
 }
 
 .user{
-color:#8c95a7;
-margin-top:3px;
+color:#8a91a8;
+font-size:20px;
+margin-top:5px;
 }
 
 .bio{
-margin:25px 0;
-color:#cbd5e1;
-line-height:1.5;
-font-size:15px;
+margin-top:25px;
+line-height:1.7;
+font-size:18px;
+color:#c6d0df;
 }
 
-.badges{
+.skills{
+margin-top:30px;
+
 display:flex;
 flex-wrap:wrap;
-gap:10px;
+justify-content:center;
+gap:12px;
 }
 
-.badge{
-padding:10px 14px;
-background:#101827;
+.skill{
+padding:12px 22px;
 border-radius:999px;
-border:1px solid rgba(255,255,255,.06);
-font-size:14px;
-transition:.25s;
+
+background:#11192d;
+
+border:1px solid rgba(255,255,255,.05);
+
+transition:.2s;
 }
 
-.badge:hover{
-transform:translateY(-3px);
+.skill:hover{
+transform:translateY(-4px);
+background:#182746;
 }
 
 .footer{
-margin-top:25px;
-font-size:13px;
-color:#6b7280;
+margin-top:40px;
+color:#6d7587;
 }
 </style>
 </head>
 
 <body>
 
-<div class="glow"></div>
-
 <div class="card">
 
-<div class="top">
-
 <div class="pfp">
-<img src="./pfp.jpeg">
+<img src="pfp.jpeg">
 </div>
 
-<div>
-<div class="name">arc</div>
-<div class="user">@xxyvzxxx • he/him</div>
-</div>
+<h1>arc</h1>
 
+<div class="user">
+@xxyvzxxx • he/him
 </div>
 
 <div class="bio">
-Building websites, VR projects, and random ideas. Still adding more stuff.
+Developer, modder, and making random VR stuff.
 </div>
 
-<div class="badges">
-<div class="badge">Developer</div>
-<div class="badge">VR Modding</div>
-<div class="badge">HTML</div>
-<div class="badge">Python</div>
-<div class="badge">Learning C++</div>
-<div class="badge">Projects</div>
+<div class="skills">
+<div class="skill">Developer</div>
+<div class="skill">VR Modding</div>
+<div class="skill">HTML</div>
+<div class="skill">Python</div>
+<div class="skill">C++</div>
+<div class="skill">Projects</div>
 </div>
 
 <div class="footer">
