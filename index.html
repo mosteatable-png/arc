@@ -6,21 +6,50 @@
 
 <title>Project Spectra</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap');
 
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 cursor:url('https://cur.cursors-4u.net/cursors/cur-11/cur1054.cur'), auto;
 }
 
 body{
-background:black;
-font-family:'Poppins',sans-serif;
 overflow:hidden;
+background:black;
 color:white;
+height:100vh;
+}
+
+/* ANIMATED BACKGROUND */
+
+.bg{
+position:fixed;
+width:100%;
+height:100%;
+background:linear-gradient(-45deg,#000000,#07111f,#001f3f,#000000);
+background-size:400% 400%;
+animation:bgMove 12s ease infinite;
+z-index:-3;
+}
+
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* PARTICLES */
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-2;
 }
 
 /* ENTER SCREEN */
@@ -34,23 +63,25 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:999;
+transition:1s;
 }
 
 .enter-btn{
-padding:30px 80px;
-font-size:50px;
-border:3px solid white;
+padding:28px 75px;
+font-size:42px;
+font-weight:600;
+background:rgba(255,255,255,0.05);
+border:2px solid rgba(255,255,255,0.2);
 border-radius:25px;
-background:transparent;
 color:white;
-cursor:pointer;
+backdrop-filter:blur(10px);
 transition:0.3s;
-box-shadow:0 0 20px white;
+box-shadow:0 0 30px rgba(0,255,255,0.2);
 }
 
 .enter-btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 40px cyan;
+transform:scale(1.07);
+box-shadow:0 0 50px cyan;
 }
 
 /* MAIN CARD */
@@ -60,102 +91,138 @@ position:absolute;
 top:50%;
 left:50%;
 transform:translate(-50%,-50%);
-width:500px;
-padding:30px;
-border-radius:25px;
-backdrop-filter:blur(15px);
+width:520px;
+padding:35px;
+border-radius:30px;
 background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.2);
-box-shadow:0 0 40px rgba(255,255,255,0.2);
+border:1px solid rgba(255,255,255,0.15);
+backdrop-filter:blur(20px);
+box-shadow:0 0 50px rgba(0,255,255,0.1);
 text-align:center;
 display:none;
+animation:fade 1s ease;
+}
+
+@keyframes fade{
+from{
+opacity:0;
+transform:translate(-50%,-45%);
+}
+to{
+opacity:1;
+transform:translate(-50%,-50%);
+}
 }
 
 /* PROFILE */
 
 .pfp{
-width:130px;
-height:130px;
+width:140px;
+height:140px;
 border-radius:50%;
+object-fit:cover;
 border:3px solid cyan;
 box-shadow:0 0 30px cyan;
-object-fit:cover;
+transition:0.4s;
+}
+
+.pfp:hover{
+transform:scale(1.05);
+box-shadow:0 0 60px cyan;
 }
 
 .username{
 font-size:42px;
 font-weight:700;
 margin-top:15px;
+text-shadow:0 0 15px cyan;
 }
 
 .sub{
-opacity:0.7;
 margin-top:-5px;
+opacity:0.75;
+font-size:15px;
 }
 
 .bio{
-margin-top:20px;
+margin-top:22px;
 font-size:15px;
-opacity:0.8;
+line-height:1.7;
+opacity:0.85;
+}
+
+/* TYPING EFFECT */
+
+.typing{
+color:cyan;
+font-weight:600;
 }
 
 /* BADGES */
 
 .badges{
-margin-top:20px;
 display:flex;
 justify-content:center;
-gap:10px;
+gap:12px;
 flex-wrap:wrap;
+margin-top:25px;
 }
 
 .badge{
-padding:8px 14px;
-border-radius:12px;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.2);
+padding:8px 15px;
+border-radius:14px;
+background:rgba(255,255,255,0.06);
+border:1px solid rgba(255,255,255,0.12);
 font-size:14px;
+transition:0.3s;
+}
+
+.badge:hover{
+transform:translateY(-3px);
+box-shadow:0 0 20px cyan;
 }
 
 /* BUTTONS */
 
 .buttons{
-margin-top:25px;
+margin-top:30px;
 display:flex;
 justify-content:center;
 gap:15px;
 }
 
 .btn{
-padding:12px 24px;
+padding:13px 28px;
 border-radius:15px;
-background:rgba(255,255,255,0.08);
-border:1px solid rgba(255,255,255,0.2);
-color:white;
 text-decoration:none;
+color:white;
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.15);
 transition:0.3s;
 }
 
 .btn:hover{
-transform:translateY(-3px);
-box-shadow:0 0 20px cyan;
+transform:translateY(-4px);
+box-shadow:0 0 25px cyan;
 }
 
-/* BACKGROUND PARTICLES */
+/* FOOTER */
 
-canvas{
-position:fixed;
-top:0;
-left:0;
-z-index:-1;
+.footer{
+margin-top:25px;
+font-size:13px;
+opacity:0.5;
 }
+
 </style>
 </head>
 
 <body>
 
+<div class="bg"></div>
+
 <div id="overlay">
-<button class="enter-btn" onclick="enterSite()">Click to Enter</button>
+<button class="enter-btn" onclick="enterSite()">ENTER</button>
 </div>
 
 <div class="container" id="main">
@@ -163,61 +230,75 @@ z-index:-1;
 <img class="pfp" src="https://i.imgur.com/2DhmtJ4.png">
 
 <div class="username">Project Spectra</div>
-<div class="sub">@spectra • he/him</div>
+
+<div class="sub">
+@spectra • he/him
+</div>
 
 <div class="bio">
-Developer • Designer • Creator
+<span class="typing"></span>
 </div>
 
 <div class="badges">
 <div class="badge">Developer</div>
+<div class="badge">Designer</div>
 <div class="badge">HTML</div>
 <div class="badge">Python</div>
-<div class="badge">Designer</div>
+<div class="badge">Verified</div>
 </div>
 
 <div class="buttons">
-<a class="btn" href="#">Discord</a>
-<a class="btn" href="#">GitHub</a>
+<a class="btn" href="https://discord.gg/">Discord</a>
+<a class="btn" href="https://github.com/">GitHub</a>
+</div>
+
+<div class="footer">
+Project Spectra © 2026
 </div>
 
 </div>
 
-<canvas id="bg"></canvas>
+<canvas id="particles"></canvas>
 
 <script>
 
-/* ENTER SCREEN */
+/* ENTER */
 
 function enterSite(){
+document.getElementById("overlay").style.opacity="0";
+
+setTimeout(()=>{
 document.getElementById("overlay").style.display="none";
 document.getElementById("main").style.display="block";
+},800);
 }
 
 /* PARTICLES */
 
-const canvas = document.getElementById("bg");
+const canvas = document.getElementById("particles");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
 let particles = [];
 
-for(let i=0;i<100;i++){
+for(let i=0;i<120;i++){
 particles.push({
 x:Math.random()*canvas.width,
 y:Math.random()*canvas.height,
 r:Math.random()*2,
-dx:(Math.random()-0.5),
-dy:(Math.random()-0.5)
+dx:(Math.random()-0.5)*0.7,
+dy:(Math.random()-0.5)*0.7
 });
 }
 
 function animate(){
+
 ctx.clearRect(0,0,canvas.width,canvas.height);
 
 particles.forEach(p=>{
+
 ctx.beginPath();
 ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
 ctx.fillStyle="white";
@@ -226,14 +307,33 @@ ctx.fill();
 p.x += p.dx;
 p.y += p.dy;
 
-if(p.x<0||p.x>canvas.width)p.dx*=-1;
-if(p.y<0||p.y>canvas.height)p.dy*=-1;
+if(p.x<0 || p.x>canvas.width) p.dx*=-1;
+if(p.y<0 || p.y>canvas.height) p.dy*=-1;
+
 });
 
 requestAnimationFrame(animate);
+
 }
 
 animate();
+
+/* TYPING EFFECT */
+
+const text = "Developer • Creator • Designer";
+let i = 0;
+
+function typing(){
+
+if(i < text.length){
+document.querySelector(".typing").innerHTML += text.charAt(i);
+i++;
+setTimeout(typing,80);
+}
+
+}
+
+typing();
 
 </script>
 
